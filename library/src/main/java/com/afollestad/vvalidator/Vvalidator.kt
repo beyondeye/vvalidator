@@ -51,6 +51,9 @@ fun Fragment.form(builder: FormBuilder): Form {
   }
   return Form(container)
       .apply(builder)
-      .also { lifecycle.addObserver(DestroyLifecycleObserver(it)) }
+// see https://github.com/afollestad/vvalidator/pull/27
+// add observer to view lifecycle owner instead of fragment lifecycle to avoid memory leak
+//     .also { lifecycle.addObserver(DestroyLifecycleObserver(it)) }
+       .also { viewLifecycleOwner.lifecycle.addObserver(DestroyLifecycleObserver(it)) }
       .start()
 }
