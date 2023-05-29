@@ -277,11 +277,16 @@ class Form constructor(validationContainer: ValidationContainer) {
   fun submitWith(
     view: View,
     onSubmit: (FormResult) -> Unit
-  ) = view.setOnClickListener {
-    val result = validate()
-    if (result.success()) {
-      onSubmit(result)
+  ) {
+    view.setOnClickListener {
+      val result = validate()
+      if (result.success()) {
+        onSubmit(result)
+      }
     }
+   //see  https://github.com/afollestad/vvalidator/pull/26
+    //fix submit button not disabled when referenced by view
+    this.submitWith = SubmitWrapper(view = view)
   }
 
   /**
