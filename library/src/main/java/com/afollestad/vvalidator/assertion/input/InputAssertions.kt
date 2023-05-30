@@ -87,6 +87,15 @@ sealed class InputAssertions {
     override fun defaultDescription() = "must be a valid email address"
   }
 
+  /** @author Dario Elyasy  */
+  class PhoneNumberAssertion internal constructor() : Assertion<EditText, PhoneNumberAssertion>() {
+    private val regex = Patterns.PHONE
+
+    override fun isValid(view: EditText) = regex.matcher(view.text()).matches()
+
+    override fun defaultDescription() = "must be a valid phone number"
+  }
+
   /** @author Aidan Follestad (@afollestad) */
   class NumberAssertion internal constructor() : Assertion<EditText, NumberAssertion>() {
     private var exactly: Long? = null

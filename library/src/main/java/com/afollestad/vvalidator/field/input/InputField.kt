@@ -26,6 +26,7 @@ import com.afollestad.vvalidator.assertion.input.InputAssertions.LengthAssertion
 import com.afollestad.vvalidator.assertion.input.InputAssertions.NotEmptyAssertion
 import com.afollestad.vvalidator.assertion.input.InputAssertions.NumberAssertion
 import com.afollestad.vvalidator.assertion.input.InputAssertions.NumberDecimalAssertion
+import com.afollestad.vvalidator.assertion.input.InputAssertions.PhoneNumberAssertion
 import com.afollestad.vvalidator.assertion.input.InputAssertions.RegexAssertion
 import com.afollestad.vvalidator.assertion.input.InputAssertions.UriAssertion
 import com.afollestad.vvalidator.field.FieldValue
@@ -76,6 +77,9 @@ open class InputField(
   /** Asserts that the input text is a valid email address. */
   fun isEmail() = assert(EmailAssertion())
 
+  /** Asserts that the input text is a valid phone number */
+  fun isPhoneNumber() = assert(PhoneNumberAssertion())
+  //
   /** Asserts that the input text is a valid number. */
   fun isNumber() = assert(NumberAssertion())
 
